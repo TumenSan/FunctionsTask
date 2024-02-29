@@ -7,6 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <!-- Поля ввода и кнопка "Add Equation" -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Поля ввода и кнопка -->
+            <RowDefinition Height="Auto"/>
+            <!-- Вертикальный ограничитель -->
+            <RowDefinition Height="*"/>
+            <!-- Таблица с результатами вычислений -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопка "Calculate" -->
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="a:" Margin="5"/>
+            <TextBox Text="{Binding CoefficientA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <TextBlock Text="b:" Margin="5"/>
+            <TextBox Text="{Binding CoefficientB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <TextBlock Text="c:" Margin="5"/>
+            <TextBox Text="{Binding CoefficientC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <Button Content="Add Equation" Command="{Binding AddEquationCommand}" Margin="5"/>
+        </StackPanel>
+
+        <!-- Вертикальный ограничитель -->
+        <Border Grid.Row="1" Height="2" Background="Black" Margin="5,0"/>
+
+        <!-- Таблица для отображения результатов вычислений -->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Equations}" AutoGenerateColumns="True" Margin="5"/>
+
+        <!-- Кнопка для запуска расчета -->
+        <Button Grid.Row="3" Content="Calculate" Command="{Binding CalculateCommand}" Margin="5"/>
     </Grid>
 </Window>
