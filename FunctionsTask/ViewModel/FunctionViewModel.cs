@@ -15,10 +15,24 @@ namespace FunctionsTask.ViewModel
     {
         public FunctionViewModel()
         {
+            // Инициализируем список типов уравнений
+            FunctionTypes = new ObservableCollection<string>
+            {
+                "линейная",
+                "квадратичная",
+                "кубическая",
+                "4-ой степени",
+                "5-ой степени"
+            };
+
             AddFunctionCommand = new RelayCommand(AddCoefficients);
             Functions = new ObservableCollection<FunctionModel>();
         }
 
+        // Список типов уравнений
+        public ObservableCollection<string> FunctionTypes { get; set; }
+
+        // Данные уравнений
         private ObservableCollection<FunctionModel> _functions { get; set; } = new ObservableCollection<FunctionModel>();
         public ObservableCollection<FunctionModel> Functions
         {
