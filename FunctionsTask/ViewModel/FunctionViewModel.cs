@@ -232,6 +232,7 @@ namespace FunctionsTask.ViewModel
         }
 
 
+        // Обработчик изменении
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)

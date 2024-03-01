@@ -26,5 +26,19 @@ namespace FunctionsTask
             InitializeComponent();
             DataContext = new FunctionViewModel();
         }
+
+        private void DataGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            // Обновление высоты таблицы при изменении размеров окна
+            UpdateDataGridMaxHeight();
+        }
+
+        private void UpdateDataGridMaxHeight()
+        {
+            // Определение части высоты окна для таблицы
+            double dataGridHeight = this.ActualHeight / 2;
+
+            dataGrid.MaxHeight = dataGridHeight;
+        }
     }
 }
