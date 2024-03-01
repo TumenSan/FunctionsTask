@@ -13,7 +13,9 @@ namespace FunctionsTask.Model
         private double _coefficientB;
         private double _coefficientC;
         private double _x;
+        private double _functionDegreeX;
         private double _y;
+        private double _functionDegreeY;
         private double _result;
 
         public string Type
@@ -46,10 +48,22 @@ namespace FunctionsTask.Model
             set { _x = value; }
         }
 
+        public double FunctionDegreeX
+        {
+            get { return _functionDegreeX;  }
+            set { _functionDegreeX = value; }
+        }
+
         public double Y
         {
             get { return _y; }
             set { _y = value; }
+        }
+
+        public double FunctionDegreeY
+        {
+            get { return _functionDegreeY; }
+            set { _functionDegreeY = value; }
         }
 
         public double Result

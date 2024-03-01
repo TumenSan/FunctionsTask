@@ -176,13 +176,34 @@ namespace FunctionsTask.ViewModel
 
         private void RecognitionDegrees(FunctionModel function)
         {
-            // EquationDegreeX = Type * ...
-            // EquationDegreeY = Type * ...
+            switch (function.Type)
+            {
+                case "линейная":
+                    function.FunctionDegreeX = 1;
+                    function.FunctionDegreeY = 0;
+                    break;
+                case "квадратичная":
+                    function.FunctionDegreeX = 2;
+                    function.FunctionDegreeY = 1;
+                    break;
+                case "кубическая":
+                    function.FunctionDegreeX = 3;
+                    function.FunctionDegreeY = 2;
+                    break;
+                case "4-ой степени":
+                    function.FunctionDegreeX = 4;
+                    function.FunctionDegreeY = 3;
+                    break;
+                case "5-ой степени":
+                    function.FunctionDegreeX = 5;
+                    function.FunctionDegreeY = 4;
+                    break;
+            }
         }
 
         private void AddCoefficients(object parameter)
         {
-            Functions.Add(new FunctionModel { CoefficientA = CoefficientA, CoefficientB = CoefficientB, CoefficientC = CoefficientC, X = 1, Y = 1 });
+            Functions.Add(new FunctionModel { Type = SelectedFunctionType, CoefficientA = CoefficientA, CoefficientB = CoefficientB, CoefficientC = CoefficientC, X = 1, Y = 1 });
             Calculate(Functions);
         }
 
@@ -193,6 +214,7 @@ namespace FunctionsTask.ViewModel
             //Result = (CoefficientA * X ^ EquationDegreeX) + (CoefficientB * Y ^ EquationDegreeY) + CoefficientC
             foreach (var function in functions)
             {
+                RecognitionDegrees(function);
                 double result = CalculateResult(function);
                 function.Result = result;
             }
@@ -202,8 +224,8 @@ namespace FunctionsTask.ViewModel
         private double CalculateResult(FunctionModel function)
         {
             // Вычисление результата для каждого уравнения
-            double result = (function.CoefficientA * Math.Pow(function.X, 1))
-                          + (function.CoefficientB * Math.Pow(function.Y, 1))
+            double result = (function.CoefficientA * Math.Pow(function.X, function.FunctionDegreeX))
+                          + (function.CoefficientB * Math.Pow(function.Y, function.FunctionDegreeY))
                           + function.CoefficientC;
             return result;
         }
