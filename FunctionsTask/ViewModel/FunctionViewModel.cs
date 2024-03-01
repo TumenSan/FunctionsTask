@@ -16,17 +16,17 @@ namespace FunctionsTask.ViewModel
         public FunctionViewModel()
         {
             AddEquationCommand = new RelayCommand(AddCoefficients);
-            Equations = new ObservableCollection<FunctionModel>();
+            Functions = new ObservableCollection<FunctionModel>();
         }
 
-        private ObservableCollection<FunctionModel> _equations { get; set; } = new ObservableCollection<FunctionModel>();
-        public ObservableCollection<FunctionModel> Equations
+        private ObservableCollection<FunctionModel> _functions { get; set; } = new ObservableCollection<FunctionModel>();
+        public ObservableCollection<FunctionModel> Functions
         {
-            get { return _equations; }
+            get { return _functions; }
             set
             {
-                _equations = value;
-                OnPropertyChanged(nameof(Equations)); // Передаем имя свойства "Equations"
+                _functions = value;
+                OnPropertyChanged(nameof(Functions)); // Передаем имя свойства "Equations"
             }
         }
 
@@ -97,13 +97,28 @@ namespace FunctionsTask.ViewModel
 
         private void AddCoefficients(object parameter)
         {
-            Equations.Add(new FunctionModel { CoefficientA = CoefficientA, CoefficientB = CoefficientB, CoefficientC = CoefficientC });
+            Functions.Add(new FunctionModel { CoefficientA = CoefficientA, CoefficientB = CoefficientB, CoefficientC = CoefficientC, X = 1, Y = 1 });
+            Calculate(Functions);
         }
 
-        private void Calculate()
+        private void Calculate(IEnumerable<FunctionModel> functions)
         {
             // Реализация вычисления результата для каждого уравнения    
-            // Result = (CoefficientA * X ^ EquationDegreeX) + (CoefficientB * Y ^ EquationDegreeY) + CoefficientC
+            //Result = (CoefficientA * X ^ EquationDegreeX) + (CoefficientB * Y ^ EquationDegreeY) + CoefficientC
+            foreach (var function in functions)
+            {
+                double result = CalculateResult(function);
+                function.Result = result;
+            }
+        }
+
+        private double CalculateResult(FunctionModel function)
+        {
+            // Вычисление результата для каждого уравнения
+            double result = (function.CoefficientA * Math.Pow(function.X, 1))
+                          + (function.CoefficientB * Math.Pow(function.Y, 1))
+                          + function.CoefficientC;
+            return result;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
