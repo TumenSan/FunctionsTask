@@ -104,6 +104,28 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        private double _x;
+        public double X
+        {
+            get { return _x; }
+            set
+            {
+                _x = value;
+                OnPropertyChanged(nameof(X)); // Передача имени свойства "X"
+            }
+        }
+
+        private double _y;
+        public double Y
+        {
+            get { return _y; }
+            set
+            {
+                _y = value;
+                OnPropertyChanged(nameof(Y)); // Передача имени свойства "Y"
+            }
+        }
+
         private void UpdateCoefficientCValues()
         {
             // Очищаем список значений коэффициента c
@@ -205,7 +227,15 @@ namespace FunctionsTask.ViewModel
         // Добавление коэффициентов
         private void AddCoefficients(object parameter)
         {
-            Functions.Add(new FunctionModel { Type = SelectedFunctionType, CoefficientA = CoefficientA, CoefficientB = CoefficientB, CoefficientC = CoefficientC, X = 1, Y = 1 });
+            Functions.Add(new FunctionModel 
+            { 
+                Type = SelectedFunctionType, 
+                CoefficientA = CoefficientA, 
+                CoefficientB = CoefficientB, 
+                CoefficientC = CoefficientC, 
+                X = 1, 
+                Y = 1
+            });
             Calculate(Functions);
         }
 
