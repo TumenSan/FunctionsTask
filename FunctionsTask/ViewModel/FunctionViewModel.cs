@@ -15,7 +15,7 @@ namespace FunctionsTask.ViewModel
     {
         public FunctionViewModel()
         {
-            AddEquationCommand = new RelayCommand(AddCoefficients);
+            AddFunctionCommand = new RelayCommand(AddCoefficients);
             Functions = new ObservableCollection<FunctionModel>();
         }
 
@@ -87,7 +87,7 @@ namespace FunctionsTask.ViewModel
             }
         }
 
-        public ICommand AddEquationCommand { get; }
+        public ICommand AddFunctionCommand { get; }
 
         private void RecognitionDegrees()
         {
