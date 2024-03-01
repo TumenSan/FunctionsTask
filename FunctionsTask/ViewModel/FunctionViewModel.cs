@@ -227,6 +227,18 @@ namespace FunctionsTask.ViewModel
         // Добавление коэффициентов
         private void AddCoefficients(object parameter)
         {
+            if (string.IsNullOrEmpty(SelectedFunctionType))
+            {
+                ShowErrorMessage("Пожалуйста, выберите тип функции.");
+                return;
+            }
+
+            if (CoefficientC == 0)
+            {
+                ShowErrorMessage("Пожалуйста, выберите C.");
+                return;
+            }
+
             Functions.Add(new FunctionModel 
             { 
                 Type = SelectedFunctionType, 
