@@ -8,6 +8,7 @@ using FunctionsTask.View;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FunctionsTask.ViewModel
 {
@@ -201,6 +202,7 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        // Добавление коэффициентов
         private void AddCoefficients(object parameter)
         {
             Functions.Add(new FunctionModel { Type = SelectedFunctionType, CoefficientA = CoefficientA, CoefficientB = CoefficientB, CoefficientC = CoefficientC, X = 1, Y = 1 });
@@ -211,7 +213,6 @@ namespace FunctionsTask.ViewModel
         private void Calculate(IEnumerable<FunctionModel> functions)
         {
             // Реализация вычисления результата для каждого уравнения    
-            //Result = (CoefficientA * X ^ EquationDegreeX) + (CoefficientB * Y ^ EquationDegreeY) + CoefficientC
             foreach (var function in functions)
             {
                 RecognitionDegrees(function);
@@ -237,5 +238,12 @@ namespace FunctionsTask.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        // Сообщение об ошибке
+        private void ShowErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
     }
 }
