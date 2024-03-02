@@ -30,6 +30,10 @@
               SelectedItem="{Binding CoefficientC, Mode=TwoWay}" 
               Width="75" 
               Margin="5"/>
+            <TextBlock Text="x:" Margin="5"/>
+            <TextBox Text="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <TextBlock Text="y:" Margin="5"/>
+            <TextBox Text="{Binding Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
             <Button Content="Add Function" Command="{Binding AddFunctionCommand}" Margin="5"/>
         </WrapPanel>
 
@@ -38,16 +42,16 @@
 
         <!-- Таблица для отображения результатов вычислений -->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" Margin="5" CanUserAddRows="True" ItemsSource="{Binding Functions}" SizeChanged="DataGrid_SizeChanged">
+            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" Margin="5" ItemsSource="{Binding Functions}" SizeChanged="DataGrid_SizeChanged">
                 <DataGrid.Columns>
                     <!-- Колонка для f(x, y) -->
                     <DataGridTextColumn Header="f(x, y)" Binding="{Binding Result}" Width="*" MinWidth="40" IsReadOnly="True"/>
 
                     <!-- Колонка для x -->
-                    <DataGridTextColumn Header="x" Binding="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="40" />
+                    <DataGridTextColumn Header="x" Binding="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="40" IsReadOnly="True" />
 
                     <!-- Колонка для y -->
-                    <DataGridTextColumn Header="y" Binding="{Binding Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="40" />
+                    <DataGridTextColumn Header="y" Binding="{Binding Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="40" IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

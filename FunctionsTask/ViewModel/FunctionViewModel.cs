@@ -245,8 +245,8 @@ namespace FunctionsTask.ViewModel
                 CoefficientA = CoefficientA, 
                 CoefficientB = CoefficientB, 
                 CoefficientC = CoefficientC, 
-                X = 1, 
-                Y = 1
+                X = X, 
+                Y = Y
             });
             Calculate(Functions);
         }
