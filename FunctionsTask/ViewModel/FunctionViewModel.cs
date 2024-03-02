@@ -19,9 +19,9 @@ namespace FunctionsTask.ViewModel
             // Инициализируем список типов уравнений
             FunctionTypes = new ObservableCollection<string>
             {
-                "линейная",
-                "квадратичная",
-                "кубическая",
+                "Линейная",
+                "Квадратичная",
+                "Кубическая",
                 "4-ой степени",
                 "5-ой степени"
             };
@@ -134,21 +134,21 @@ namespace FunctionsTask.ViewModel
             // Заполняем список значений в зависимости от выбранной функции
             switch (SelectedFunctionType)
             {
-                case "линейная":
+                case "Линейная":
                     CoefficientCValues.Add(1);
                     CoefficientCValues.Add(2);
                     CoefficientCValues.Add(3);
                     CoefficientCValues.Add(4);
                     CoefficientCValues.Add(5);
                     break;
-                case "квадратичная":
+                case "Квадратичная":
                     CoefficientCValues.Add(10);
                     CoefficientCValues.Add(20);
                     CoefficientCValues.Add(30);
                     CoefficientCValues.Add(40);
                     CoefficientCValues.Add(50);
                     break;
-                case "кубическая":
+                case "Кубическая":
                     CoefficientCValues.Add(100);
                     CoefficientCValues.Add(200);
                     CoefficientCValues.Add(300);
@@ -201,15 +201,15 @@ namespace FunctionsTask.ViewModel
         {
             switch (function.Type)
             {
-                case "линейная":
+                case "Линейная":
                     function.FunctionDegreeX = 1;
                     function.FunctionDegreeY = 0;
                     break;
-                case "квадратичная":
+                case "Квадратичная":
                     function.FunctionDegreeX = 2;
                     function.FunctionDegreeY = 1;
                     break;
-                case "кубическая":
+                case "Кубическая":
                     function.FunctionDegreeX = 3;
                     function.FunctionDegreeY = 2;
                     break;

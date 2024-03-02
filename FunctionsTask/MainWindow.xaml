@@ -34,7 +34,7 @@
             <TextBox Text="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
             <TextBlock Text="y:" Margin="5"/>
             <TextBox Text="{Binding Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
-            <Button Content="Add Function" Command="{Binding AddFunctionCommand}" Margin="5"/>
+            <Button Content="Добавить" Command="{Binding AddFunctionCommand}" Margin="5"/>
         </WrapPanel>
 
         <!-- Вертикальный ограничитель -->
