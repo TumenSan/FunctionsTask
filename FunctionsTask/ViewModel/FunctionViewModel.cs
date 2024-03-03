@@ -225,7 +225,7 @@ namespace FunctionsTask.ViewModel
         }
 
         // Добавление коэффициентов
-        private void AddCoefficients(object parameter)
+        public void AddCoefficients(object parameter)
         {
             if (string.IsNullOrEmpty(SelectedFunctionType))
             {
@@ -254,7 +254,7 @@ namespace FunctionsTask.ViewModel
 
         private void Calculate(IEnumerable<FunctionModel> functions)
         {
-            // Реализация вычисления результата для каждого уравнения    
+            // Вычисления результата для каждого уравнения    
             foreach (var function in functions)
             {
                 RecognitionDegrees(function);
@@ -264,9 +264,9 @@ namespace FunctionsTask.ViewModel
         }
 
 
-        private double CalculateResult(FunctionModel function)
+        public double CalculateResult(FunctionModel function)
         {
-            // Вычисление результата для каждого уравнения
+            // Вычисление результата уравнения
             double result = (function.CoefficientA * Math.Pow(function.X, function.FunctionDegreeX))
                           + (function.CoefficientB * Math.Pow(function.Y, function.FunctionDegreeY))
                           + function.CoefficientC;

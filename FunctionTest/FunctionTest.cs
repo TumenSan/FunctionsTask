@@ -1,18 +1,36 @@
 using FunctionsTask;
+using FunctionsTask.Model;
+using FunctionsTask.ViewModel;
 
 namespace FunctionTest
 {
-    public class Tests
+    [TestFixture]
+    public class FunctionViewModelTests
     {
+        private FunctionViewModel _viewModel;
+
         [SetUp]
         public void Setup()
         {
+            _viewModel = new FunctionViewModel();
         }
 
         [Test]
-        public void Test1()
+        public void CalculateResult_LinearFunction()
         {
-            Assert.Pass();
+            var function = new FunctionModel
+            {
+                Type = "Линейная",
+                CoefficientA = 1,
+                CoefficientB = 2,
+                CoefficientC = 3,
+                X = 1,
+                Y = 1
+            };
+
+            var result = _viewModel.CalculateResult(function);
+
+            Assert.That(result, Is.EqualTo(6));
         }
     }
 }
