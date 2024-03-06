@@ -34,13 +34,19 @@ namespace FunctionsTask.ViewModel
             Functions = new ObservableCollection<FunctionModel>();
         }
 
-
-        // Список типов уравнений
+        /// <summary>
+        /// Список типов уравнений
+        /// </summary>
         public ObservableCollection<string> FunctionTypes { get; set; }
 
-        // Список С зависящий от типов уравнений
+        /// <summary>
+        /// Список С зависящий от типов уравнений
+        /// </summary>
         public ObservableCollection<double> CoefficientCValues { get; set; }
 
+        /// <summary>
+        /// Тип выбранной функции
+        /// </summary>
         private string _selectedFunctionType;
         public string SelectedFunctionType
         {
@@ -55,8 +61,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
-
-        // Данные уравнений
+        /// <summary>
+        /// Коллекция данных функции
+        /// </summary>
         private ObservableCollection<FunctionModel> _functions { get; set; } = new ObservableCollection<FunctionModel>();
         public ObservableCollection<FunctionModel> Functions
         {
@@ -68,8 +75,11 @@ namespace FunctionsTask.ViewModel
             }
         }
 
-        private double _type;
-        public double Type
+        /// <summary>
+        /// Свойство тип выбранной функции
+        /// </summary>
+        private int _type;
+        public int Type
         {
             get { return _type; }
             set
@@ -80,7 +90,9 @@ namespace FunctionsTask.ViewModel
         }
 
 
-
+        /// <summary>
+        /// Свойство CoefficientA
+        /// </summary>
         private double _coefficientA;
         public double CoefficientA
         {
@@ -92,7 +104,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// Свойство CoefficientB
+        /// </summary>
         private double _coefficientB;
         public double CoefficientB
         {
@@ -104,6 +118,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        /// <summary>
+        /// Свойство X
+        /// </summary>
         private double _x;
         public double X
         {
@@ -115,6 +132,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        /// <summary>
+        /// Свойство Y
+        /// </summary>
         private double _y;
         public double Y
         {
@@ -126,6 +146,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        /// <summary>
+        /// Метод обновления CoefficientC
+        /// </summary>
         private void UpdateCoefficientCValues()
         {
             // Очищаем список значений коэффициента c
@@ -172,6 +195,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        /// <summary>
+        /// Свойство CoefficientC
+        /// </summary>
         private double _coefficientC;
         public double CoefficientC
         {
@@ -183,6 +209,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        /// <summary>
+        /// Свойство Result
+        /// </summary>
         private double _result;
         public double Result
         {
@@ -197,6 +226,10 @@ namespace FunctionsTask.ViewModel
         public ICommand AddFunctionCommand { get; }
 
 
+        /// <summary>
+        /// Метод распознания степеней X и Y по свойству типа функции
+        /// </summary>
+        /// <param name="function"></param>
         private void RecognitionDegrees(FunctionModel function)
         {
             switch (function.Type)
@@ -224,7 +257,10 @@ namespace FunctionsTask.ViewModel
             }
         }
 
-        // Добавление коэффициентов
+        /// <summary>
+        /// Метод добавления коэффициентов
+        /// </summary>
+        /// <param name="parameter"></param>
         public void AddCoefficients(object parameter)
         {
             if (string.IsNullOrEmpty(SelectedFunctionType))
@@ -252,9 +288,12 @@ namespace FunctionsTask.ViewModel
         }
 
 
+        /// <summary>
+        /// Метод вычисления результата для каждого уравнения 
+        /// </summary>
+        /// <param name="functions"></param>
         private void Calculate(IEnumerable<FunctionModel> functions)
-        {
-            // Вычисления результата для каждого уравнения    
+        {  
             foreach (var function in functions)
             {
                 RecognitionDegrees(function);
@@ -264,9 +303,13 @@ namespace FunctionsTask.ViewModel
         }
 
 
+        /// <summary>
+        /// Метод вычисление результата уравнения
+        /// </summary>
+        /// <param name="function"></param>
+        /// <returns></returns>
         public double CalculateResult(FunctionModel function)
         {
-            // Вычисление результата уравнения
             double result = (function.CoefficientA * Math.Pow(function.X, function.FunctionDegreeX))
                           + (function.CoefficientB * Math.Pow(function.Y, function.FunctionDegreeY))
                           + function.CoefficientC;
@@ -274,7 +317,9 @@ namespace FunctionsTask.ViewModel
         }
 
 
-        // Обработчик изменении
+        /// <summary>
+        /// Обработчик изменении
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -282,7 +327,10 @@ namespace FunctionsTask.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // Сообщение об ошибке
+        /// <summary>
+        /// Сообщение об ошибке
+        /// </summary>
+        /// <param name="message"></param>
         private void ShowErrorMessage(string message)
         {
             MessageBox.Show(message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
