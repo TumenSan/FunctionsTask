@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FunctionsTask"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="430">
+        Title="MainWindow" Height="300" Width="430"
+        MinHeight="220" MinWidth="200">
     <Grid>
         <!-- Поля ввода и кнопка "Add Equation" -->
         <Grid.RowDefinitions>
