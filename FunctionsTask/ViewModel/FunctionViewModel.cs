@@ -223,6 +223,9 @@ namespace FunctionsTask.ViewModel
             }
         }
 
+        /// <summary>
+        /// Получение команды для добавления новой функции с заданными коэффициентами
+        /// </summary>
         public ICommand AddFunctionCommand { get; }
 
 
