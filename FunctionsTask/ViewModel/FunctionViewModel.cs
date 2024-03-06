@@ -14,9 +14,12 @@ namespace FunctionsTask.ViewModel
 {
     public class FunctionViewModel
     {
+        /// <summary>
+        /// Конструктор FunctionViewModel
+        /// </summary>
         public FunctionViewModel()
         {
-            // Инициализируем список типов уравнений
+            // Инициализация списка типов уравнений
             FunctionTypes = new ObservableCollection<string>
             {
                 "Линейная",
@@ -26,11 +29,13 @@ namespace FunctionsTask.ViewModel
                 "5-ой степени"
             };
 
-            // Инициализируем список значений для коэффициента c для каждой функции
+            // Инициализация списка значений для коэффициента c для каждой функции
             CoefficientCValues = new ObservableCollection<double>();
 
-
+            // Инициализаци команды для добавления функций
             AddFunctionCommand = new RelayCommand(AddCoefficients);
+
+            // Инициализация коллекции функций
             Functions = new ObservableCollection<FunctionModel>();
         }
 
