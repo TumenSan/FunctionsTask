@@ -23,18 +23,18 @@
         <WrapPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
             <ComboBox ItemsSource="{Binding FunctionTypes}" SelectedItem="{Binding SelectedFunctionType, Mode=TwoWay}" Width="130" Margin="5"/>
             <TextBlock Text="a:" Margin="5"/>
-            <TextBox Text="{Binding CoefficientA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <TextBox Text="{Binding CoefficientA, StringFormat={}{0:N2}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
             <TextBlock Text="b:" Margin="5"/>
-            <TextBox Text="{Binding CoefficientB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <TextBox Text="{Binding CoefficientB, StringFormat={}{0:N2}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
             <TextBlock Text="c:" Margin="5"/>
             <ComboBox ItemsSource="{Binding CoefficientCValues}" 
               SelectedItem="{Binding CoefficientC, Mode=TwoWay}" 
               Width="75" 
               Margin="5"/>
             <TextBlock Text="x:" Margin="5"/>
-            <TextBox Text="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <TextBox Text="{Binding X, StringFormat={}{0:N2}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
             <TextBlock Text="y:" Margin="5"/>
-            <TextBox Text="{Binding Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
+            <TextBox Text="{Binding Y, StringFormat={}{0:N2}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5"/>
             <Button Content="Добавить" Command="{Binding AddFunctionCommand}" Margin="5"/>
         </WrapPanel>
 
